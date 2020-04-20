@@ -1,4 +1,6 @@
 import turtle
+import random
+
 
 class Circuito():
     corredores= []
@@ -28,12 +30,23 @@ class Circuito():
         #con el for, creamos los 4 corredores (new_turtle) y se añaden a la lista corredores.
         
         
-    
-    
-    
+    def competir (self):
+        ganador= False
+        
+        while not ganador:
+            for tortuga in self.corredores:
+                avance= random.randint(1,6)
+                tortuga.forward(avance)   #instruccion del modulo Turtle para que la tortuga avance el nº que ha salido de random
+                
+                if tortuga.position()[0] >= self.__finishLine:
+                    ganador= True
+                    print("Ha ganado la tortuga {}".format (tortuga.color()[0]))
+                    break
     
     
     
     
 if __name__== '__main__':       #si se ejecuta desde main, la pantalla
     circuito= Circuito (640, 480)  # tiene estas dimensiones. Y si importamos este modulo a otro, esta parte no se ejecutaria.
+    
+    circuito.competir()
